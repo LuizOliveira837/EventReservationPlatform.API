@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "OIOHx35OiOWA2CpDpM0jsy/uDsyxyirdxxcv8HGWbK8=",
+  "Source": "EventReservationPlatform.API",
+  "BasePath": "_content/EventReservationPlatform.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\EventReservationPlatform.API.props" />
+</Project>
