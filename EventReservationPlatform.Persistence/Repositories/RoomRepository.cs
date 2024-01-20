@@ -24,23 +24,39 @@ namespace EventReservationPlatform.Persistence.Repositories
             return new ResponseNewRoomDto(room.Id);
         }
 
-        public Task<IList<Room>> GetAllRoomsAsync()
+        public async Task<IList<Room>> GetAllRoomsAsync()
         {
-            throw new NotImplementedException();
+            var rooms =  DbContext
+               .Rooms;
+
+            return rooms;
         }
 
         public async Task<Room> GetByIdAsync(Guid Id)
         {
-            var room =  DbContext
+            var room = DbContext
                 .Rooms
                 .Single(r => r.Id == Id);
 
             return room;
         }
 
-        public void ToogleStatusAsync(RequestToggleRoomDto requestToggleRoomDto)
+        public async Task ToogleStatusAsync(Guid Id)
         {
-            throw new NotImplementedException();
+            var room = await GetByIdAsync(Id);
+
+            room.ToggleStatus();
         }
+
+        public async Task UpdateRoomAsync(RequestUpdateRoomDto requestUpdateRoomDto)
+        {
+            var room = await GetByIdAsync(requestUpdateRoomDto.Id);
+
+            room.LocationId = requestUpdateRoomDto.LocationId;
+            room.Name = requestUpdateRoomDto.Name;
+            room.Capacity = requestUpdateRoomDto.Capacity;
+        }
+
+
     }
 }

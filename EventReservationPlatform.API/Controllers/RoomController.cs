@@ -44,10 +44,11 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPut]
-        [Route("Rooms/Update/{id}")]
+        [Route("Rooms/Update")]
         public ActionResult Update(RequestUpdateRoomDto requestUpdateRoomDto)
         {
-            return Ok(requestUpdateRoomDto);
+            RoomService.UpdateRoom(requestUpdateRoomDto);
+            return Ok();
         }
 
         [HttpPut]

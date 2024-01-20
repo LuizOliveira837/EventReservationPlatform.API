@@ -13,6 +13,7 @@ namespace EventReservationPlatform.Core.Interface.Repositories
         public Task<IList<Room>> GetAllRoomsAsync();
         public Task<Room> GetByIdAsync(Guid Id);
         public Task<ResponseNewRoomDto> CreateRoomAsync(Room room);
-        public void ToogleStatusAsync(RequestToggleRoomDto requestToggleRoomDto);
+        public Task UpdateRoomAsync(RequestUpdateRoomDto requestUpdateRoomDto);
+        public Task ToogleStatusAsync(Guid id);
     }
 }

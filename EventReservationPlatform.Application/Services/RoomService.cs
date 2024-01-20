@@ -42,17 +42,23 @@ namespace EventReservationPlatform.Application.Services
 
             return new ResponseViewRoomDto(
                  room.Name
-                ,room.Capacity
-                ,room.LocationId
-                ,room.Status
+                , room.Capacity
+                , room.LocationId
+                , room.Status
                 );
         }
 
         public async Task ToogleStatus(RequestToggleRoomDto requestToggleRoomDto)
         {
-            var room = await  RoomRepository.GetByIdAsync(requestToggleRoomDto.Id);
+            var room = await RoomRepository.GetByIdAsync(requestToggleRoomDto.Id);
 
-            room.ToggleStatus();
+            await RoomRepository.ToogleStatusAsync(requestToggleRoomDto.Id);
+
+        }
+
+        public async Task UpdateRoom(RequestUpdateRoomDto requestUpdateRoomDto)
+        {
+            await RoomRepository.UpdateRoomAsync(requestUpdateRoomDto);
         }
     }
 }
