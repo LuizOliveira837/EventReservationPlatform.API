@@ -12,6 +12,6 @@ namespace EventReservationPlatform.Core.Interface.Services
         public Task<IList<ResponseViewRoomDto>> GetAllRooms();
         public Task<ResponseViewRoomDto> GetById(Guid Id);
         public Task<ResponseNewRoomDto> CreateRoom(RequestNewRoomDto requestNewRoomDto);
-        public void ToogleStatus(RequestToggleRoomDto requestToggleRoomDto);
+        public Task ToogleStatus(RequestToggleRoomDto requestToggleRoomDto);
     }
 }

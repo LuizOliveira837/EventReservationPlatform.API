@@ -1,5 +1,7 @@
 ﻿using EventReservationPlatform.Core.Dtos;
+using EventReservationPlatform.Core.Interface.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace EventReservationPlatform.API.Controllers
 {
@@ -7,9 +9,10 @@ namespace EventReservationPlatform.API.Controllers
     [Route("api/v1")]
     public class RoomController : ControllerBase
     {
-        public RoomController()
+        public IRoomService RoomService { get; set; }
+        public RoomController(IRoomService roomService)
         {
-            
+            RoomService = roomService;
         }
 
 
@@ -22,16 +25,22 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpGet]
         [Route("Rooms/{id}")]
-        public ActionResult Get(Guid id)
+        public async Task<ActionResult> Get(Guid id)
         {
-            return Ok("Ola mundo");
+            var room = await  RoomService.GetById(id);
+
+            return Ok(room);
         }
 
         [HttpPost]
-        [Route("Rooms/New/{id}")]
-        public ActionResult Post(RequestNewRoomDto requestNewRoomDto)
+        [Route("Rooms/New")]
+        public async Task<ActionResult> Post(RequestNewRoomDto requestNewRoomDto)
         {
-            return Ok(requestNewRoomDto);
+
+            var result = await RoomService.CreateRoom(requestNewRoomDto);
+
+
+            return Ok(result.Id);
         }
 
         [HttpPut]
@@ -41,11 +50,13 @@ namespace EventReservationPlatform.API.Controllers
             return Ok(requestUpdateRoomDto);
         }
 
-        [HttpDelete]
-        [Route("Rooms/Delete/{id}")]
-        public ActionResult Delete(RequestDeleteRoomDto requestUpdateRoomDto)
+        [HttpPut]
+        [Route("Rooms/Toggle/{id}")]
+        public async Task<ActionResult> Delete(RequestToggleRoomDto requestToggleRoomDto)
         {
-            return Ok(requestUpdateRoomDto);
+            await RoomService.ToogleStatus(new RequestToggleRoomDto(requestToggleRoomDto.Id));
+            return Ok();
         }
+
     }
 }

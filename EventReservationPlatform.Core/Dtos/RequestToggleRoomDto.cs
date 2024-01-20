@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EventReservationPlatform.Core.Dtos
 {
-    public class RequestDeleteRoomDto
+    public class RequestToggleRoomDto
     {
-        public RequestDeleteRoomDto(Guid id)
+        public RequestToggleRoomDto(Guid id)
         {
             Id = id;
         }

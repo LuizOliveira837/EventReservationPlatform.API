@@ -9,15 +9,15 @@ namespace EventReservationPlatform.Core.Dtos
 {
     public class RequestNewRoomDto
     {
-        public RequestNewRoomDto(string name, int capacity, Location location)
+        public RequestNewRoomDto(string name, int capacity, Guid locationId)
         {
             Name = name;
             Capacity = capacity;
-            Location = location;
+            LocationId = locationId;
         }
 
         public string Name { get; set; }
         public int Capacity { get; set; }
-        public Location Location { get; set; }
+        public Guid LocationId { get; set; }
     }
 }

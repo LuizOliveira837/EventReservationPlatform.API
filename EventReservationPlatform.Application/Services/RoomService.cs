@@ -1,4 +1,6 @@
 ﻿using EventReservationPlatform.Core.Dtos;
+using EventReservationPlatform.Core.Entities;
+using EventReservationPlatform.Core.Interface.Repositories;
 using EventReservationPlatform.Core.Interface.Services;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,23 @@ namespace EventReservationPlatform.Application.Services
 {
     public class RoomService : IRoomService
     {
-
-        public Task<ResponseNewRoomDto> CreateRoom(RequestNewRoomDto requestNewRoomDto)
+        public readonly IRoomRepository RoomRepository;
+        public RoomService(IRoomRepository roomRepository)
         {
-            throw new NotImplementedException();
+            RoomRepository = roomRepository;
+        }
+
+        public async Task<ResponseNewRoomDto> CreateRoom(RequestNewRoomDto requestNewRoomDto)
+        {
+            var room = new Room(
+                requestNewRoomDto.Name,
+                requestNewRoomDto.Capacity,
+                requestNewRoomDto.LocationId
+                );
+
+            var result = await RoomRepository.CreateRoomAsync(room);
+
+            return result;
         }
 
         public Task<IList<ResponseViewRoomDto>> GetAllRooms()
@@ -21,14 +36,23 @@ namespace EventReservationPlatform.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<ResponseViewRoomDto> GetById(Guid Id)
+        public async Task<ResponseViewRoomDto> GetById(Guid Id)
         {
-            throw new NotImplementedException();
+            var room = await RoomRepository.GetByIdAsync(Id);
+
+            return new ResponseViewRoomDto(
+                 room.Name
+                ,room.Capacity
+                ,room.LocationId
+                ,room.Status
+                );
         }
 
-        public void ToogleStatus(RequestToggleRoomDto requestToggleRoomDto)
+        public async Task ToogleStatus(RequestToggleRoomDto requestToggleRoomDto)
         {
-            throw new NotImplementedException();
+            var room = await  RoomRepository.GetByIdAsync(requestToggleRoomDto.Id);
+
+            room.ToggleStatus();
         }
     }
 }
