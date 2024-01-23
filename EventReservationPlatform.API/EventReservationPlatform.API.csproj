@@ -8,7 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EventReservationPlatform.Application\EventReservationPlatform.Application.csproj" />
+    <ProjectReference Include="..\EventReservationPlatform.Core\EventReservationPlatform.Core.csproj" />
+    <ProjectReference Include="..\EventReservationPlatform.Persistence\EventReservationPlatform.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

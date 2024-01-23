@@ -8,11 +8,16 @@ namespace EventReservationPlatform.Core.Dtos
 {
     public class ResponseNewRoomDto
     {
-        public readonly Guid Id;
 
         public ResponseNewRoomDto(Guid id)
         {
             Id = id;
         }
+
+        public ResponseNewRoomDto() { }
+
+        public readonly Guid Id;
+
+
     }
 }

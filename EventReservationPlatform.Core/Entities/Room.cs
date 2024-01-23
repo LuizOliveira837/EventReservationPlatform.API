@@ -19,6 +19,11 @@ namespace EventReservationPlatform.Core.Entities
 
         }
 
+        public Room()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public readonly Guid Id;
         public string Name { get; set; }
         public int Capacity { get; set; }

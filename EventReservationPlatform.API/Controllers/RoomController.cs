@@ -18,16 +18,20 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpGet]
         [Route("Rooms")]
-        public ActionResult GetAll()
+        public async Task<ActionResult> GetAll()
         {
-            return Ok("Ola mundo");
+            var rooms = await RoomService.GetAllRooms();
+
+            return Ok(rooms);
+
+
         }
 
         [HttpGet]
         [Route("Rooms/{id}")]
         public async Task<ActionResult> Get(Guid id)
         {
-            var room = await  RoomService.GetById(id);
+            var room = await RoomService.GetById(id);
 
             return Ok(room);
         }
@@ -53,9 +57,9 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpPut]
         [Route("Rooms/Toggle/{id}")]
-        public async Task<ActionResult> Delete(RequestToggleRoomDto requestToggleRoomDto)
+        public async Task<ActionResult> Toggle(Guid Id)
         {
-            await RoomService.ToogleStatus(new RequestToggleRoomDto(requestToggleRoomDto.Id));
+            await RoomService.ToogleStatus(new RequestToggleRoomDto(Id));
             return Ok();
         }
 

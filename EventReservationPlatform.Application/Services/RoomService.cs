@@ -2,6 +2,7 @@
 using EventReservationPlatform.Core.Entities;
 using EventReservationPlatform.Core.Interface.Repositories;
 using EventReservationPlatform.Core.Interface.Services;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,32 +21,30 @@ namespace EventReservationPlatform.Application.Services
 
         public async Task<ResponseNewRoomDto> CreateRoom(RequestNewRoomDto requestNewRoomDto)
         {
-            var room = new Room(
-                requestNewRoomDto.Name,
-                requestNewRoomDto.Capacity,
-                requestNewRoomDto.LocationId
-                );
+            var room = requestNewRoomDto.Adapt<Room>(); 
 
             var result = await RoomRepository.CreateRoomAsync(room);
 
             return result;
         }
 
-        public Task<IList<ResponseViewRoomDto>> GetAllRooms()
+        public async Task<IList<ResponseViewRoomDto>> GetAllRooms()
         {
-            throw new NotImplementedException();
+            var rooms = await RoomRepository.GetAllRoomsAsync();
+
+            var viewRomms = rooms.Adapt<IList<ResponseViewRoomDto>>();
+
+            return viewRomms;
+
         }
 
         public async Task<ResponseViewRoomDto> GetById(Guid Id)
         {
             var room = await RoomRepository.GetByIdAsync(Id);
 
-            return new ResponseViewRoomDto(
-                 room.Name
-                , room.Capacity
-                , room.LocationId
-                , room.Status
-                );
+            var viewRomm = room.Adapt<ResponseViewRoomDto>();
+
+            return viewRomm;
         }
 
         public async Task ToogleStatus(RequestToggleRoomDto requestToggleRoomDto)
