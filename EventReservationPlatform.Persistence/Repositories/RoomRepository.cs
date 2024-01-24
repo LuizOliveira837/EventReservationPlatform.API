@@ -36,7 +36,7 @@ namespace EventReservationPlatform.Persistence.Repositories
         {
             var room = DbContext
                 .Rooms
-                .Single(r => r.Id == Id);
+                .FirstOrDefault(r => r.Id == Id);
 
             return room;
         }

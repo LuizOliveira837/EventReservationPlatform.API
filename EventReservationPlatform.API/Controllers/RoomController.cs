@@ -40,9 +40,7 @@ namespace EventReservationPlatform.API.Controllers
         [Route("Rooms/New")]
         public async Task<ActionResult> Post(RequestNewRoomDto requestNewRoomDto)
         {
-
             var result = await RoomService.CreateRoom(requestNewRoomDto);
-
 
             return Ok(result.Id);
         }
