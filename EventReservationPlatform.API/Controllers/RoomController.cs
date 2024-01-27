@@ -1,5 +1,6 @@
 ﻿using EventReservationPlatform.Core.Dtos;
 using EventReservationPlatform.Core.Interface.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 
@@ -47,9 +48,9 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpPut]
         [Route("Rooms/Update")]
-        public ActionResult Update(RequestUpdateRoomDto requestUpdateRoomDto)
+        public async Task<ActionResult> Update(RequestUpdateRoomDto requestUpdateRoomDto)
         {
-            RoomService.UpdateRoom(requestUpdateRoomDto);
+            await RoomService.UpdateRoom(requestUpdateRoomDto);
             return Ok();
         }
 

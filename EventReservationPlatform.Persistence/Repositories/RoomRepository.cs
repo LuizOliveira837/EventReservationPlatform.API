@@ -13,6 +13,7 @@ namespace EventReservationPlatform.Persistence.Repositories
     public class RoomRepository : IRoomRepository
     {
         public readonly EventReservationDbContext DbContext;
+        
         public RoomRepository(EventReservationDbContext dbContext)
         {
             DbContext = dbContext;

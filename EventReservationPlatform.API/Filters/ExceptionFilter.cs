@@ -6,9 +6,9 @@ using System.Net;
 
 namespace EventReservationPlatform.API.Filters
 {
-    public class ExceptionFilter : ExceptionFilterAttribute
+    public class ExceptionFilter : IExceptionFilter
     {
-        public override void OnException(ExceptionContext context)
+        public void OnException(ExceptionContext context)
         {
             var statusCode = HttpStatusCode.InternalServerError;
 
@@ -17,6 +17,7 @@ namespace EventReservationPlatform.API.Filters
                 statusCode = HttpStatusCode.NotFound;
             }
 
+
             context.HttpContext.Response.ContentType = "application/json";
             context.HttpContext.Response.StatusCode = (int)statusCode;
             context.Result = new JsonResult( new
@@ -24,5 +25,7 @@ namespace EventReservationPlatform.API.Filters
             );
 
         }
+
+    
     }
 }

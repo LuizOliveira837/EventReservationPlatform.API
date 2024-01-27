@@ -1,7 +1,11 @@
-﻿using EventReservationPlatform.Core.Dtos;
+﻿using EventReservationPlatform.Application.Validators;
+using EventReservationPlatform.Core.Dtos;
 using EventReservationPlatform.Core.Entities;
+using EventReservationPlatform.Core.Exceptions;
 using EventReservationPlatform.Core.Interface.Repositories;
 using EventReservationPlatform.Core.Interface.Services;
+using EventReservationPlatform.Core.Validators;
+using FluentValidation;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -14,6 +18,7 @@ namespace EventReservationPlatform.Application.Services
     public class RoomService : IRoomService
     {
         public readonly IRoomRepository RoomRepository;
+        
         public RoomService(IRoomRepository roomRepository)
         {
             RoomRepository = roomRepository;
@@ -21,7 +26,9 @@ namespace EventReservationPlatform.Application.Services
 
         public async Task<ResponseNewRoomDto> CreateRoom(RequestNewRoomDto requestNewRoomDto)
         {
-            var room = requestNewRoomDto.Adapt<Room>(); 
+            var room = requestNewRoomDto.Adapt<Room>();
+
+            RoomValidatorHandle.NewRoomIsValid(room);
 
             var result = await RoomRepository.CreateRoomAsync(room);
 
@@ -38,9 +45,11 @@ namespace EventReservationPlatform.Application.Services
 
         }
 
-        public async Task<ResponseViewRoomDto> GetById(Guid Id)
+        public async Task<ResponseViewRoomDto> GetById(Guid id)
         {
-            var room = await RoomRepository.GetByIdAsync(Id);
+            var room = await RoomRepository.GetByIdAsync(id);
+
+            if (room is null) throw new NotFoundByIdException("Room", id);
 
             var viewRomm = room.Adapt<ResponseViewRoomDto>();
 
@@ -57,6 +66,12 @@ namespace EventReservationPlatform.Application.Services
 
         public async Task UpdateRoom(RequestUpdateRoomDto requestUpdateRoomDto)
         {
+            var room = await RoomRepository.GetByIdAsync(requestUpdateRoomDto.Id);
+
+            room = requestUpdateRoomDto.Adapt(room);
+
+            RoomValidatorHandle.NewRoomIsValid(room);
+
             await RoomRepository.UpdateRoomAsync(requestUpdateRoomDto);
         }
     }

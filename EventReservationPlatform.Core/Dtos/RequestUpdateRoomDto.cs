@@ -1,4 +1,5 @@
 ﻿using EventReservationPlatform.Core.Entities;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace EventReservationPlatform.Core.Dtos
 {
     public class RequestUpdateRoomDto
     {
+        [AdaptIgnore]
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int Capacity { get; set; }
