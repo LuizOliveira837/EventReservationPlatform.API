@@ -12,7 +12,7 @@ namespace EventReservationPlatform.Core.Dtos
     {
         [AdaptIgnore]
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public string RoomName { get; set; }
         public int Capacity { get; set; }
         public Guid LocationId { get; set; }
 

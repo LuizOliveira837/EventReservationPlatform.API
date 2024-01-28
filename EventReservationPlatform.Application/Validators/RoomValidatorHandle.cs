@@ -14,7 +14,7 @@ namespace EventReservationPlatform.Application.Validators
     {
         public static IValidator<Room> NewRoomValidate { get; set; }
 
-        public static void NewRoomIsValid(Room newRoom)
+        public static void RoomIsValid(Room newRoom)
         {
             NewRoomValidate = new RoomValidator();
             var result = NewRoomValidate.Validate(newRoom);

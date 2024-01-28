@@ -24,8 +24,6 @@ namespace EventReservationPlatform.API.Controllers
             var rooms = await RoomService.GetAllRooms();
 
             return Ok(rooms);
-
-
         }
 
         [HttpGet]

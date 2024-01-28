@@ -19,11 +19,11 @@ namespace EventReservationPlatform.Core.Validators
                 .GreaterThan(1)
                 .WithMessage("The Capacity has to be greater than 1");
 
-            RuleFor(rf => rf.Name) 
+            RuleFor(rf => rf.RoomName) 
                 .NotEmpty()
-                .WithMessage("The Name don't can to be empty")
+                .WithMessage("The RoomName don't can to be empty")
                 .Length(8,40)
-                .WithMessage("The length Name has to be between 8 and 40");
+                .WithMessage("The length RoomName has to be between 8 and 40");
 
             RuleFor(rf => rf.LocationId)
                 .NotEmpty()

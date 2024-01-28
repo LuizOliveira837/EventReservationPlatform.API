@@ -2,6 +2,7 @@
 using EventReservationPlatform.Core.Entities;
 using EventReservationPlatform.Core.Interface.Repositories;
 using EventReservationPlatform.Persistence.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,33 +21,34 @@ namespace EventReservationPlatform.Persistence.Repositories
         }
         public async Task<ResponseNewRoomDto> CreateRoomAsync(Room room)
         {
-            DbContext.Rooms.Add(room);
-
+            await DbContext.Rooms.AddAsync(room);
+            await DbContext.SaveChangesAsync();
             return new ResponseNewRoomDto(room.Id);
         }
 
         public async Task<IList<Room>> GetAllRoomsAsync()
         {
-            var rooms =  DbContext
-               .Rooms;
+            var rooms =  await DbContext
+               .Rooms
+               .ToListAsync();
 
             return rooms;
         }
 
         public async Task<Room> GetByIdAsync(Guid Id)
         {
-            var room = DbContext
+            var room = await DbContext
                 .Rooms
-                .FirstOrDefault(r => r.Id == Id);
+                .FirstOrDefaultAsync(r => r.Id == Id);
 
             return room;
         }
 
-        public async Task ToogleStatusAsync(Guid Id)
+        public async Task ToogleStatusAsync(Room room)
         {
-            var room = await GetByIdAsync(Id);
-
             room.ToggleStatus();
+            await DbContext.SaveChangesAsync();
+
         }
 
         public async Task UpdateRoomAsync(RequestUpdateRoomDto requestUpdateRoomDto)
@@ -54,7 +56,7 @@ namespace EventReservationPlatform.Persistence.Repositories
             var room = await GetByIdAsync(requestUpdateRoomDto.Id);
 
             room.LocationId = requestUpdateRoomDto.LocationId;
-            room.Name = requestUpdateRoomDto.Name;
+            room.RoomName = requestUpdateRoomDto.RoomName;
             room.Capacity = requestUpdateRoomDto.Capacity;
         }
 

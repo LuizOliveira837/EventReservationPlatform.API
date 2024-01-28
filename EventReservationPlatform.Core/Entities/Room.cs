@@ -1,5 +1,7 @@
 ﻿using EventReservationPlatform.Core.Enums;
 using Mapster;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EventReservationPlatform.Core.Entities
 {
@@ -8,7 +10,7 @@ namespace EventReservationPlatform.Core.Entities
         public Room(string name, int capacity, Guid locationId)
         {
             Id = Guid.NewGuid();
-            Name = name;
+            RoomName = name;
             Capacity = capacity;
             LocationId = locationId;
             Status = StatusEntity.Enable;
@@ -19,11 +21,10 @@ namespace EventReservationPlatform.Core.Entities
         {
             Id = Guid.NewGuid();
         }
-
         public readonly Guid Id;
-        public string Name { get; set; }
+        public string RoomName { get; set; }
         public int Capacity { get; set; }
-        public virtual Location Location { get; set; }
+        //public virtual Location Location { get; set; }
         public Guid LocationId { get; set; }
         public StatusEntity Status { get; set; }
 

@@ -28,7 +28,7 @@ namespace EventReservationPlatform.Application.Services
         {
             var room = requestNewRoomDto.Adapt<Room>();
 
-            RoomValidatorHandle.NewRoomIsValid(room);
+            RoomValidatorHandle.RoomIsValid(room);
 
             var result = await RoomRepository.CreateRoomAsync(room);
 
@@ -60,7 +60,9 @@ namespace EventReservationPlatform.Application.Services
         {
             var room = await RoomRepository.GetByIdAsync(requestToggleRoomDto.Id);
 
-            await RoomRepository.ToogleStatusAsync(requestToggleRoomDto.Id);
+            if (room is null) throw new NotFoundByIdException("Room", requestToggleRoomDto.Id);
+
+            await RoomRepository.ToogleStatusAsync(room);
 
         }
 
@@ -70,7 +72,7 @@ namespace EventReservationPlatform.Application.Services
 
             room = requestUpdateRoomDto.Adapt(room);
 
-            RoomValidatorHandle.NewRoomIsValid(room);
+            RoomValidatorHandle.RoomIsValid(room);
 
             await RoomRepository.UpdateRoomAsync(requestUpdateRoomDto);
         }

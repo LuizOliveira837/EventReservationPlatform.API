@@ -14,6 +14,6 @@ namespace EventReservationPlatform.Core.Interface.Repositories
         public Task<Room> GetByIdAsync(Guid Id);
         public Task<ResponseNewRoomDto> CreateRoomAsync(Room room);
         public Task UpdateRoomAsync(RequestUpdateRoomDto requestUpdateRoomDto);
-        public Task ToogleStatusAsync(Guid id);
+        public Task ToogleStatusAsync(Room room);
     }
 }
