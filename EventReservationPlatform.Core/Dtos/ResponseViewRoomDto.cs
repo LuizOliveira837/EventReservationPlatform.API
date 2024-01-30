@@ -13,16 +13,18 @@ namespace EventReservationPlatform.Core.Dtos
         public ResponseViewRoomDto()
         {
         }
-        public ResponseViewRoomDto(string name, int capacity, StatusEntity status)
+        public ResponseViewRoomDto(string roomName, int capacity, string status)
         {
-            Name = name;
+            RoomName = roomName;
             Capacity = capacity;
             Status = status;
+
+            
         }
 
-        public string Name { get; set; }
+        public string RoomName { get; set; }
         public int Capacity { get; set; }
         public virtual Location Location { get; set; }
-        public StatusEntity Status { get; }
+        public string Status { get; set; }
     }
 }

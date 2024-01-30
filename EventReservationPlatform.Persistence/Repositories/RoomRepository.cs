@@ -44,20 +44,9 @@ namespace EventReservationPlatform.Persistence.Repositories
             return room;
         }
 
-        public async Task ToogleStatusAsync(Room room)
+        public async Task UpdateRoomAsync()
         {
-            room.ToggleStatus();
             await DbContext.SaveChangesAsync();
-
-        }
-
-        public async Task UpdateRoomAsync(RequestUpdateRoomDto requestUpdateRoomDto)
-        {
-            var room = await GetByIdAsync(requestUpdateRoomDto.Id);
-
-            room.LocationId = requestUpdateRoomDto.LocationId;
-            room.RoomName = requestUpdateRoomDto.RoomName;
-            room.Capacity = requestUpdateRoomDto.Capacity;
         }
 
 

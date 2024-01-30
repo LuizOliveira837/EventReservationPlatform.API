@@ -53,10 +53,10 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPut]
-        [Route("Rooms/Toggle/{id}")]
-        public async Task<ActionResult> Toggle(Guid Id)
+        [Route("Rooms/Toggle")]
+        public async Task<ActionResult> Toggle(RequestToggleRoomDto id)
         {
-            await RoomService.ToogleStatus(new RequestToggleRoomDto(Id));
+            await RoomService.ToogleStatus(id);
             return Ok();
         }
 

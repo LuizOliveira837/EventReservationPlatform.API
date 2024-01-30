@@ -62,7 +62,9 @@ namespace EventReservationPlatform.Application.Services
 
             if (room is null) throw new NotFoundByIdException("Room", requestToggleRoomDto.Id);
 
-            await RoomRepository.ToogleStatusAsync(room);
+            room.ToggleStatus();
+
+            await RoomRepository.UpdateRoomAsync();
 
         }
 
@@ -74,7 +76,7 @@ namespace EventReservationPlatform.Application.Services
 
             RoomValidatorHandle.RoomIsValid(room);
 
-            await RoomRepository.UpdateRoomAsync(requestUpdateRoomDto);
+            await RoomRepository.UpdateRoomAsync();
         }
     }
 }

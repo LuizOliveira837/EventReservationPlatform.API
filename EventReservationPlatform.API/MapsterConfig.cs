@@ -13,7 +13,12 @@ namespace EventReservationPlatform.API
                 .Ignore(dest => dest.Id)
                 .TwoWays();
 
-           
+            TypeAdapterConfig<Room, ResponseViewRoomDto>
+                .NewConfig()
+                .Map(dest => dest.Status, src => src.Status.ToString());
+
+
+
         }
     }
 }
