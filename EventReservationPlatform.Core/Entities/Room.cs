@@ -25,7 +25,7 @@ namespace EventReservationPlatform.Core.Entities
         public readonly Guid Id;
         public string RoomName { get; set; }
         public int Capacity { get; set; }
-        //public virtual Location Location { get; set; }
+        public virtual Location Location { get; set; }
         public Guid LocationId { get; set; }
         public StatusEntity Status { get; set; }
 

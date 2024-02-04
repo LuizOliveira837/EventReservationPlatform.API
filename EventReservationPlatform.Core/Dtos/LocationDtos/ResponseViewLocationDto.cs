@@ -4,26 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventReservationPlatform.Core.Entities
+namespace EventReservationPlatform.Core.Dtos.LocationDtos
 {
-    public class Location
+    public class ResponseViewLocationDto
     {
-        public Location(string cep, string address, int number, string complement)
+        public ResponseViewLocationDto(string cEP, string address, int number, string complement)
         {
-            Id = Guid.NewGuid();
-            CEP = cep;
+            CEP = cEP;
             Address = address;
             Number = number;
             Complement = complement;
         }
 
-
-        public Location()
-        {
-            Id= Guid.NewGuid();
-        }
-
-        public Guid Id { get; set; }
         public string CEP { get; set; }
         public string Address { get; set; }
         public int Number { get; set; }

@@ -1,4 +1,4 @@
-﻿using EventReservationPlatform.Core.Dtos;
+﻿using EventReservationPlatform.Core.Dtos.Room;
 using EventReservationPlatform.Core.Entities;
 using System;
 using System.Collections.Generic;

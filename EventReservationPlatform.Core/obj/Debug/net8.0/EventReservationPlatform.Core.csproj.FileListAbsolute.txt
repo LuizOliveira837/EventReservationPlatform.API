@@ -1,0 +1,13 @@
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\bin\Debug\net8.0\EventReservationPlatform.Core.deps.json
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\bin\Debug\net8.0\EventReservationPlatform.Core.dll
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\bin\Debug\net8.0\EventReservationPlatform.Core.pdb
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.AssemblyInfoInputs.cache
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.AssemblyInfo.cs
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.csproj.CoreCompileInputs.cache
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.sourcelink.json
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.dll
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\refint\EventReservationPlatform.Core.dll
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.pdb
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\ref\EventReservationPlatform.Core.dll
+C:\Users\luizh\source\repos\EventReservationPlatform.API\EventReservationPlatform.Core\obj\Debug\net8.0\EventReservationPlatform.Core.csproj.AssemblyReference.cache

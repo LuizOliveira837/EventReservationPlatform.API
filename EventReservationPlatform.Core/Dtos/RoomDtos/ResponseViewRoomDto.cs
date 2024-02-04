@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventReservationPlatform.Core.Dtos
+namespace EventReservationPlatform.Core.Dtos.RoomDtos
 {
     public class ResponseViewRoomDto
     {
@@ -19,7 +19,7 @@ namespace EventReservationPlatform.Core.Dtos
             Capacity = capacity;
             Status = status;
 
-            
+
         }
 
         public string RoomName { get; set; }

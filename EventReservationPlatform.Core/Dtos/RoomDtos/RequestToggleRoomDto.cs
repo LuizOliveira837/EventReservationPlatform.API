@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventReservationPlatform.Core.Dtos
+namespace EventReservationPlatform.Core.Dtos.Room
 {
     public class RequestToggleRoomDto
     {

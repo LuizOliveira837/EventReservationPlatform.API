@@ -1,5 +1,6 @@
 ﻿using EventReservationPlatform.Application.Validators;
-using EventReservationPlatform.Core.Dtos;
+using EventReservationPlatform.Core.Dtos.Room;
+using EventReservationPlatform.Core.Dtos.RoomDtos;
 using EventReservationPlatform.Core.Entities;
 using EventReservationPlatform.Core.Exceptions;
 using EventReservationPlatform.Core.Interface.Repositories;

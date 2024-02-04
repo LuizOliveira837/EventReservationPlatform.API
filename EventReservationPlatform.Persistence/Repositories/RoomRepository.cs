@@ -1,4 +1,4 @@
-﻿using EventReservationPlatform.Core.Dtos;
+﻿using EventReservationPlatform.Core.Dtos.Room;
 using EventReservationPlatform.Core.Entities;
 using EventReservationPlatform.Core.Interface.Repositories;
 using EventReservationPlatform.Persistence.Database;
@@ -39,6 +39,7 @@ namespace EventReservationPlatform.Persistence.Repositories
         {
             var room = await DbContext
                 .Rooms
+                .Include(ro=> ro.Location)
                 .FirstOrDefaultAsync(r => r.Id == Id);
 
             return room;

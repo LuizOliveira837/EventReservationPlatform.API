@@ -12,12 +12,20 @@ namespace EventReservationPlatform.Application.Validators
 {
     public static class RoomValidatorHandle
     {
-        public static IValidator<Room> NewRoomValidate { get; set; }
 
         public static void RoomIsValid(Room newRoom)
         {
-            NewRoomValidate = new RoomValidator();
-            var result = NewRoomValidate.Validate(newRoom);
+            IValidator<Room> newRoomValidator = new RoomValidator();
+            var result = newRoomValidator.Validate(newRoom);
+
+            if (!result.IsValid) throw new Exception(result.Errors.FirstOrDefault().ToString());
+        }
+
+
+        public static void LocationIsValid(Location newLocation)
+        {
+            IValidator<Location> newLocationValidator = new LocationValidator();
+            var result = newLocationValidator.Validate(newLocation);
 
             if (!result.IsValid) throw new Exception(result.Errors.FirstOrDefault().ToString());
         }

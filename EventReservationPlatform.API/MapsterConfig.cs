@@ -1,4 +1,5 @@
-﻿using EventReservationPlatform.Core.Dtos;
+﻿using EventReservationPlatform.Core.Dtos.Room;
+using EventReservationPlatform.Core.Dtos.RoomDtos;
 using EventReservationPlatform.Core.Entities;
 using Mapster;
 

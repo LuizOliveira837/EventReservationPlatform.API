@@ -1,4 +1,4 @@
-﻿using EventReservationPlatform.Core.Dtos;
+﻿using EventReservationPlatform.Core.Dtos.Room;
 using EventReservationPlatform.Core.Interface.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +28,7 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpGet]
         [Route("Rooms/{id}")]
-        public async Task<ActionResult> Get(Guid id)
+        public async Task<ActionResult> GetById(Guid id)
         {
             var room = await RoomService.GetById(id);
 
