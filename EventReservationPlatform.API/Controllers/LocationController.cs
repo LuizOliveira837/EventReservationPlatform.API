@@ -25,9 +25,10 @@ namespace EventReservationPlatform.API.Controllers
 
         [HttpGet]
         [Route("/locations/{id}")]
-        public IActionResult GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            return Ok();
+            var locationView = await _service.GetByIdAsync(id);
+            return Ok(locationView);
         }
 
         [HttpPost]
@@ -35,7 +36,19 @@ namespace EventReservationPlatform.API.Controllers
         public async Task<IActionResult> Post(RequestNewLocationDto request)
         {
             var id = await _service.CreateLocation(request);
-            return Ok(id);
+
+            return CreatedAtAction(nameof(GetById), new { id }, request);
+        }
+
+
+        [HttpPut]
+        [Route("/locations/update")]
+        public async Task<IActionResult> Post(RequestUpdateLocationDto request)
+        {
+            await _service.UpdateLocation(request);
+
+            return Ok();
+
         }
     }
 }

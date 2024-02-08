@@ -41,7 +41,7 @@ namespace EventReservationPlatform.API.Controllers
         {
             var result = await RoomService.CreateRoom(requestNewRoomDto);
 
-            return Ok(result.Id);
+            return CreatedAtAction(nameof(GetById), new { id = result.Id }, requestNewRoomDto);
         }
 
         [HttpPut]

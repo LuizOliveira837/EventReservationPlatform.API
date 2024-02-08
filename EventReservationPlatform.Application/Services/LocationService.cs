@@ -19,9 +19,15 @@ namespace EventReservationPlatform.Application.Services
         {
             _locationRepository = locationRepository;
         }
-        public Task<ResponseViewLocationDto> GetByIdAsync(Guid id)
+        public async Task<ResponseViewLocationDto> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var location = await _locationRepository.GetById(id);
+
+            if (location == null) throw new Exception("Location not found");
+
+            var locationView = location.Adapt<ResponseViewLocationDto>();
+
+            return locationView;
         }
 
         public async Task<Guid> CreateLocation(RequestNewLocationDto request)
@@ -30,9 +36,24 @@ namespace EventReservationPlatform.Application.Services
 
             RoomValidatorHandle.LocationIsValid(newLocation);
 
-            var id = await _locationRepository.CreateLocationAsync(newLocation);
+            var id = await _locationRepository.CreateAsync(newLocation);
 
             return id;
+        }
+
+        public async Task UpdateLocation(RequestUpdateLocationDto request)
+        {
+            var location = await _locationRepository.GetById(request.Id);
+
+            if (location == null) throw new Exception("Location not found");
+
+            var updateLocation = request.Adapt(location);
+
+            RoomValidatorHandle.LocationIsValid(updateLocation);
+
+            await _locationRepository.UpdateAsync();
+
+
         }
     }
 }

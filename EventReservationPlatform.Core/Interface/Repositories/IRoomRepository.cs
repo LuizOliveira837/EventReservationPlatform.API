@@ -10,9 +10,9 @@ namespace EventReservationPlatform.Core.Interface.Repositories
 {
     public interface IRoomRepository
     {
-        public Task<IList<Room>> GetAllRoomsAsync();
+        public Task<IList<Room>> GetAllAsync();
         public Task<Room> GetByIdAsync(Guid Id);
-        public Task<ResponseNewRoomDto> CreateRoomAsync(Room room);
-        public Task UpdateRoomAsync();
+        public Task<ResponseNewRoomDto> CreateAsync(Room room);
+        public Task UpdateAsync();
     }
 }

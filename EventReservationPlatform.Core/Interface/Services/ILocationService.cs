@@ -12,5 +12,6 @@ namespace EventReservationPlatform.Core.Interface.Services
 
         public Task<ResponseViewLocationDto> GetByIdAsync(Guid id);
         public Task<Guid> CreateLocation(RequestNewLocationDto request);
+        public Task UpdateLocation(RequestUpdateLocationDto request);
     }
 }

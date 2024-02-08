@@ -9,8 +9,8 @@ namespace EventReservationPlatform.Core.Interface.Repositories
 {
     public interface ILocationRepository
     {
-
-        public Task<Guid> CreateLocationAsync(Location location);
+        public Task<Guid> CreateAsync(Location location);
         public Task<Location> GetById(Guid id);
+        public Task UpdateAsync();
     }
 }

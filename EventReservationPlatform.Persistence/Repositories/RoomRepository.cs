@@ -13,23 +13,24 @@ namespace EventReservationPlatform.Persistence.Repositories
 {
     public class RoomRepository : IRoomRepository
     {
-        public readonly EventReservationDbContext DbContext;
+        public readonly EventReservationDbContext _dbContext;
         
         public RoomRepository(EventReservationDbContext dbContext)
         {
-            DbContext = dbContext;
+            _dbContext = dbContext;
         }
-        public async Task<ResponseNewRoomDto> CreateRoomAsync(Room room)
+        public async Task<ResponseNewRoomDto> CreateAsync(Room room)
         {
-            await DbContext.Rooms.AddAsync(room);
-            await DbContext.SaveChangesAsync();
+            await _dbContext.Rooms.AddAsync(room);
+            await _dbContext.SaveChangesAsync();
             return new ResponseNewRoomDto(room.Id);
         }
 
-        public async Task<IList<Room>> GetAllRoomsAsync()
+        public async Task<IList<Room>> GetAllAsync()
         {
-            var rooms =  await DbContext
+            var rooms =  await _dbContext
                .Rooms
+               .Include(ro=> ro.Location)
                .ToListAsync();
 
             return rooms;
@@ -37,7 +38,7 @@ namespace EventReservationPlatform.Persistence.Repositories
 
         public async Task<Room> GetByIdAsync(Guid Id)
         {
-            var room = await DbContext
+            var room = await _dbContext
                 .Rooms
                 .Include(ro=> ro.Location)
                 .FirstOrDefaultAsync(r => r.Id == Id);
@@ -45,9 +46,9 @@ namespace EventReservationPlatform.Persistence.Repositories
             return room;
         }
 
-        public async Task UpdateRoomAsync()
+        public async Task UpdateAsync()
         {
-            await DbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
 
 

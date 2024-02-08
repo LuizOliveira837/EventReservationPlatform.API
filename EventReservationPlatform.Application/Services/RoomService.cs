@@ -31,14 +31,14 @@ namespace EventReservationPlatform.Application.Services
 
             RoomValidatorHandle.RoomIsValid(room);
 
-            var result = await RoomRepository.CreateRoomAsync(room);
+            var result = await RoomRepository.CreateAsync(room);
 
             return result;
         }
 
         public async Task<IList<ResponseViewRoomDto>> GetAllRooms()
         {
-            var rooms = await RoomRepository.GetAllRoomsAsync();
+            var rooms = await RoomRepository.GetAllAsync();
 
             var viewRomms = rooms.Adapt<IList<ResponseViewRoomDto>>();
 
@@ -65,7 +65,7 @@ namespace EventReservationPlatform.Application.Services
 
             room.ToggleStatus();
 
-            await RoomRepository.UpdateRoomAsync();
+            await RoomRepository.UpdateAsync();
 
         }
 
@@ -77,7 +77,7 @@ namespace EventReservationPlatform.Application.Services
 
             RoomValidatorHandle.RoomIsValid(room);
 
-            await RoomRepository.UpdateRoomAsync();
+            await RoomRepository.UpdateAsync();
         }
     }
 }

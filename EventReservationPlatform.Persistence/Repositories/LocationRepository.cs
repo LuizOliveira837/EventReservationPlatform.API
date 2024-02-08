@@ -17,7 +17,7 @@ namespace EventReservationPlatform.Persistence.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<Guid> CreateLocationAsync(Location location)
+        public async Task<Guid> CreateAsync(Location location)
         {
             await _dbContext
                 .Locations
@@ -30,12 +30,17 @@ namespace EventReservationPlatform.Persistence.Repositories
 
         public async Task<Location> GetById(Guid id)
         {
-            var location = await _dbContext 
+            var location = await _dbContext
                 .Locations
                 .FirstOrDefaultAsync(location => location.Id == id);
 
             return location;
-        
+
+        }
+
+        public async Task UpdateAsync()
+        {
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

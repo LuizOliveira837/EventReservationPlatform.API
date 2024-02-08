@@ -1,4 +1,5 @@
-﻿using EventReservationPlatform.Core.Dtos.Room;
+﻿using EventReservationPlatform.Core.Dtos.LocationDtos;
+using EventReservationPlatform.Core.Dtos.Room;
 using EventReservationPlatform.Core.Dtos.RoomDtos;
 using EventReservationPlatform.Core.Entities;
 using Mapster;
@@ -17,6 +18,12 @@ namespace EventReservationPlatform.API
             TypeAdapterConfig<Room, ResponseViewRoomDto>
                 .NewConfig()
                 .Map(dest => dest.Status, src => src.Status.ToString());
+
+            TypeAdapterConfig<ResponseViewLocationDto, Location>
+                .NewConfig()
+                .Ignore(dest => dest.Id)
+                .TwoWays();
+
 
 
 

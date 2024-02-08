@@ -6,25 +6,21 @@ using System.Threading.Tasks;
 
 namespace EventReservationPlatform.Core.Dtos.LocationDtos
 {
-    public class ResponseViewLocationDto
+    public class RequestUpdateLocationDto
     {
-        public ResponseViewLocationDto(string cEP, string address, int number, string complement)
+        public RequestUpdateLocationDto(Guid id, string cEP, string address, int number, string complement)
         {
+            Id = id;
             CEP = cEP;
             Address = address;
             Number = number;
             Complement = complement;
         }
 
-        public ResponseViewLocationDto()
-        {
-    
-        }
-
+        public Guid Id { get; set; }
         public string CEP { get; set; }
         public string Address { get; set; }
         public int Number { get; set; }
         public string Complement { get; set; }
-
     }
 }
