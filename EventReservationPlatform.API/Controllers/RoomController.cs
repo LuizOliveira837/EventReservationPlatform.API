@@ -36,7 +36,7 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPost]
-        [Route("Rooms/New")]
+        [Route("Rooms")]
         public async Task<ActionResult> Post(RequestNewRoomDto requestNewRoomDto)
         {
             var result = await RoomService.CreateRoom(requestNewRoomDto);
@@ -45,7 +45,7 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPut]
-        [Route("Rooms/Update")]
+        [Route("Rooms")]
         public async Task<ActionResult> Update(RequestUpdateRoomDto requestUpdateRoomDto)
         {
             await RoomService.UpdateRoom(requestUpdateRoomDto);

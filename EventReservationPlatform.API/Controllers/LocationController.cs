@@ -32,7 +32,7 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPost]
-        [Route("/locations/New")]
+        [Route("/locations")]
         public async Task<IActionResult> Post(RequestNewLocationDto request)
         {
             var id = await _service.CreateLocation(request);
@@ -42,7 +42,7 @@ namespace EventReservationPlatform.API.Controllers
 
 
         [HttpPut]
-        [Route("/locations/update")]
+        [Route("/locations")]
         public async Task<IActionResult> Post(RequestUpdateLocationDto request)
         {
             await _service.UpdateLocation(request);
