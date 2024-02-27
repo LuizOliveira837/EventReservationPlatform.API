@@ -29,5 +29,13 @@ namespace EventReservationPlatform.Application.Validators
 
             if (!result.IsValid) throw new Exception(result.Errors.FirstOrDefault().ToString());
         }
+
+        public static void UserIsValid(User newUser)
+        {
+            IValidator<User> newLocationValidator = new UserValidator();
+            var result = newLocationValidator.Validate(newUser);
+
+            if (!result.IsValid) throw new Exception(result.Errors.FirstOrDefault().ToString());
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace EventReservationPlatform.Persistence.Database
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<User> Users { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Definir chave primeria
@@ -30,6 +31,11 @@ namespace EventReservationPlatform.Persistence.Database
             modelBuilder.Entity<Location>()
                     .ToTable("Locations")
                     .HasKey(l => l.Id);
+
+            modelBuilder.Entity<User>()
+                  .ToTable("Users")
+                .HasKey(r => r.Id);
+
 
             modelBuilder.Entity<Room>()
                     .HasOne(r => r.Location)

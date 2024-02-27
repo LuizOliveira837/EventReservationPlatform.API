@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventReservationPlatform.Core.Entities
+namespace EventReservationPlatform.Core.Dtos.UserDtos
 {
-    public class User
+    public class RequestNewUserDTO
     {
-        public User(string name, string lastName, string email, string cellPhone, string password, StatusEntity status)
+        public RequestNewUserDTO(string name, string lastName, string email, string cellPhone, string password, StatusEntity status)
         {
-            Id = Guid.NewGuid();
             Name = name;
             LastName = lastName;
             Email = email;
@@ -20,13 +19,6 @@ namespace EventReservationPlatform.Core.Entities
             Status = status;
         }
 
-
-        public User()
-        {
-            Id = Guid.NewGuid();
-        }
-
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
