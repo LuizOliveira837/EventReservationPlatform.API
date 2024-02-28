@@ -10,5 +10,6 @@ namespace EventReservationPlatform.Core.Interface.Services
     public interface IUserService
     {
         public Task<Guid> CreateUser(RequestNewUserDTO requestNewUserDTO);
+        public Task<string> Autentication(RequestLoginUserDTO requestNewUserDTO);
     }
 }

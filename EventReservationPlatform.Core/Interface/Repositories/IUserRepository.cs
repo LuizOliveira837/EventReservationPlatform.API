@@ -11,5 +11,6 @@ namespace EventReservationPlatform.Core.Interface.Repositories
     {
 
         public Task<Guid> CreateAsync(User user);
-}
+        public Task<User> GetByEmail(string email);
+    }
 }

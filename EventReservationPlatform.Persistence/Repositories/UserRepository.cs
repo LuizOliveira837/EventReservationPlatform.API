@@ -1,5 +1,6 @@
 ﻿using EventReservationPlatform.Core.Entities;
 using EventReservationPlatform.Core.Interface.Repositories;
+using EventReservationPlatform.Persistence.Auth;
 using EventReservationPlatform.Persistence.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,11 +21,25 @@ namespace EventReservationPlatform.Persistence.Repositories
         }
         public async Task<Guid> CreateAsync(User user)
         {
+            user.Password = await EncryptPassword.Encrypt(user.Password);
+            
             _dbContext.Add(user);
 
             await _dbContext.SaveChangesAsync();
 
             return user.Id;
+        }
+
+
+
+        public async Task<User> GetByEmail(string email)
+        {
+            var user = await _dbContext
+                .Users
+                .FirstOrDefaultAsync(u => u.Email == email);
+
+            return user;
+
         }
     }
 }

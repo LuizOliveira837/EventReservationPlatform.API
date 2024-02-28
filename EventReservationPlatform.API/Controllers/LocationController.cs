@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace EventReservationPlatform.API.Controllers
 {
     [ApiController]
-    [Route("api/v1")]
+    [Route("api/v1/locations")]
     public class LocationController : Controller
     {
         private readonly ILocationService _service;
@@ -17,14 +17,13 @@ namespace EventReservationPlatform.API.Controllers
             
         }
         [HttpGet]
-        [Route("/locations")]
         public IActionResult GetAll()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("/locations/{id}")]
+        [Route("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
             var locationView = await _service.GetByIdAsync(id);
@@ -32,7 +31,6 @@ namespace EventReservationPlatform.API.Controllers
         }
 
         [HttpPost]
-        [Route("/locations")]
         public async Task<IActionResult> Post(RequestNewLocationDto request)
         {
             var id = await _service.CreateLocation(request);
@@ -42,7 +40,6 @@ namespace EventReservationPlatform.API.Controllers
 
 
         [HttpPut]
-        [Route("/locations")]
         public async Task<IActionResult> Post(RequestUpdateLocationDto request)
         {
             await _service.UpdateLocation(request);
