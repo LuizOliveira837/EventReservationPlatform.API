@@ -1,0 +1,35 @@
+# Arquivos binários e de objeto
+*.exe
+*.exe.config
+*.dll
+*.pdb
+*.cache
+*.suo
+
+# Arquivos de compilação
+bin/
+obj/
+
+# Arquivos de teste
+TestResults/
+
+# Arquivos do Visual Studio
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ferramentas de cobertura de código
+*.coveragexml
+
+# Arquivos de configuração de ambiente
+appsettings.json
+appsettings.Development.json
+
+# Arquivos de armazenamento local
+wwwroot/
+
+# Outros arquivos e diretórios a serem ignorados
+*.swp
+*.*
+*~
+.DS_Store
